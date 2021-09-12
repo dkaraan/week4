@@ -30,14 +30,12 @@ export function getAllIds(){
           id: item.id.toString()
         }
       }
-    }
-  );
-
+    });
 };
 
 //create a function to get the list of ids sorted by the names alphabetically
   //this will be used to feed into the getStaticProps() function
-export getSortedList(){
+export function getSortedList(){
 
 };
 
@@ -62,10 +60,10 @@ export async function getData(idRequested){
   //extract object value in filtered array if any
   let objReturned;
   if(objMatch.length > 0){
-    objReturned = objMatched[0];
+    objReturned = objMatch[0];
   }
   else{
-    onjReturned = {};
+    objReturned = {};
   }
   
   return objReturned; //this will be sent back to [id].js
