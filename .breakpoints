@@ -1,5 +1,13 @@
 {
   "files": {
+    "index.js": [
+      {
+        "id": "c5207f2d-35e6-4696-a387-d76523fa3583",
+        "line": 1,
+        "version": 0,
+        "index": 0
+      }
+    ],
     "week4demo/pages/api/get.js": [
       {
         "id": "464593e4-2519-46ff-972a-e02e1cba5b1e",
