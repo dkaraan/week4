@@ -1,13 +1,12 @@
 import Head from 'next/head';
+
 //import getAllIds function
   //this will take the information from the created json string to this pasge
-import {getAllIds , getData } from '../lib/data';
-
+import {getAllIds , getData } from "../lib/data.js"
 
 //create instance of getStaticProps to return the data for one person
   //this will load everytime id.js loads for a specific route (ie: /1, /2 ...etc)
-  /*params from getAllIds function*/
-export async function getStaticProps({params}){
+export async function getStaticProps({params} /*params from getAllIds function*/){
 
   //asynchronus to execute when receiving param from the getAllIds()
   const itemData = await getData(params.id /* get the param and then find the id property to send back*/);
@@ -20,7 +19,7 @@ export async function getStaticProps({params}){
 
 //create an instance of the getStaticPaths() to report to next all the dynamic urls
 export async function getStaticPaths(){
-  //call the json data from /lib/data
+  //call the json data from api/get.js
   const allPaths = getAllIds();
   return {
     allPaths,

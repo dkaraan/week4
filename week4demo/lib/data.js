@@ -30,14 +30,36 @@ export function getAllIds(){
           id: item.id.toString()
         }
       }
-    });
+    }
+  );
+
 };
 
 //create a function to get the list of ids sorted by the names alphabetically
   //this will be used to feed into the getStaticProps() function
 export function getSortedList(){
+  //get file path to json file
+    //going to join the data directory path with json file
+  const filePath = path.join(dataDirectory, "characters.json" )
 
-};
+  //read file and save as a string
+  const jsonStringData= fs.readFileSync( filePath, "utf8");
+
+  //turn the string data from jsonStringData into an json array object
+  const jsonObj = JSON.parse(jsonStringData);
+
+  //sort array by name
+  jsonObj.sort(function (a, b){
+    return a.character.localeCompare(b.character);
+  });
+
+  return jsonObj.map(item =>{
+    return{
+      id: item.id.toString(),
+      character: item.character
+    }
+  });
+}
 
 //create ansync function to get complete data for ONE character from characters.json
 export async function getData(idRequested){
