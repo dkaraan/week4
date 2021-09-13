@@ -22,7 +22,7 @@ export function getAllIds(){
   const jsonObj = JSON.parse(jsonStringData);
 
   //use .map() to create a new array from json that uses the id's of each object fromt he json file
-  return jsonObj.map(item =>{
+  const returnedData = jsonObj.map(item =>{
       return {
         //next.js wants to see it set up liek this using params
         params: {
@@ -30,9 +30,9 @@ export function getAllIds(){
           id: item.id.toString()
         }
       }
-    }
-  );
-
+    });
+    console.log(returnedData);
+  return returnedData;
 };
 
 //create a function to get the list of ids sorted by the names alphabetically
@@ -65,28 +65,28 @@ export function getSortedList(){
 export async function getData(idRequested){
   //get file path to json file
     //going to join the data directory path with json file
-  const filePath = path.join(dataDirectory, "characters.json" )
+  const filePath = path.join(dataDirectory, 'characters.json' )
 
-  //read file and save as a string
-  const jsonStringData= fs.readFileSync( filePath, "utf8");
+  //read file
+  const jsonStringData= fs.readFileSync( filePath, 'utf8');
 
   //turn the string data from jsonStringData into an json array object
   const jsonObj = JSON.parse(jsonStringData);
 
   //find the object value in the array that has the matching id
-    //this will return the array with one element
+    //.filter() will return the array with one element
   const objMatch = jsonObj.filter(obj =>{
     return obj.id.toString()===idRequested;
-  });
+    }
+  );
 
   //extract object value in filtered array if any
   let objReturned;
   if(objMatch.length > 0){
     objReturned = objMatch[0];
-  }
-  else{
-    objReturned = {};
-  }
+  } else{
+      objReturned = {};
+    }
   
   return objReturned; //this will be sent back to [id].js
 }

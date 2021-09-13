@@ -1,18 +1,19 @@
 import Head from 'next/head';
-
+//import Layout from '../components/layout';
 //import getAllIds function
   //this will take the information from the created json string to this pasge
-import {getAllIds , getData } from "../lib/data.js"
+import { getAllIds, getData } from '../lib/data';
 
 //create instance of getStaticProps to return the data for one person
   //this will load everytime id.js loads for a specific route (ie: /1, /2 ...etc)
-export async function getStaticProps({params} /*params from getAllIds function*/){
+    /*params from getAllIds function*/ 
+export async function getStaticProps( {params} ){
 
   //asynchronus to execute when receiving param from the getAllIds()
   const itemData = await getData(params.id /* get the param and then find the id property to send back*/);
   return {
-    props:{
-    itemData
+    props: {
+      itemData
     } 
   };
 }
@@ -20,16 +21,16 @@ export async function getStaticProps({params} /*params from getAllIds function*/
 //create an instance of the getStaticPaths() to report to next all the dynamic urls
 export async function getStaticPaths(){
   //call the json data from api/get.js
-  const allPaths = getAllIds();
+  const paths = getAllIds();
   return {
-    allPaths,
+    paths,
     fallback: false //what happens if a dynamic path doesnt exist 404 error
   };
 }
 
 
 //react component with the data acquired
-export default function Entry({itemData}){
+export default function Entry({ itemData }){
   <article class="card col-6">
     <div class="card-body">
       <h5 class="card-title">
