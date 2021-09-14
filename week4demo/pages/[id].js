@@ -1,5 +1,7 @@
 import Head from 'next/head';
 //import Layout from '../components/layout';
+
+
 //import getAllIds function
   //this will take the information from the created json string to this pasge
 import { getAllIds, getData } from '../lib/data';
@@ -11,6 +13,8 @@ export async function getStaticProps( {params} ){
 
   //asynchronus to execute when receiving param from the getAllIds()
   const itemData = await getData(params.id /* get the param and then find the id property to send back*/);
+  console.log("\nreturning itemData");
+  console.log(itemData);
   return {
     props: {
       itemData
@@ -22,6 +26,8 @@ export async function getStaticProps( {params} ){
 export async function getStaticPaths(){
   //call the json data from api/get.js
   const paths = getAllIds();
+  console.log("\nreturning paths");
+  console.log(paths);
   return {
     paths,
     fallback: false //what happens if a dynamic path doesnt exist 404 error
@@ -31,6 +37,7 @@ export async function getStaticPaths(){
 
 //react component with the data acquired
 export default function Entry({ itemData }){
+  return(
   <article class="card col-6">
     <div class="card-body">
       <h5 class="card-title">
@@ -43,4 +50,5 @@ export default function Entry({ itemData }){
       <p class="card-text">{itemData.genre}</p>
     </div>
   </article>
+  );
 }

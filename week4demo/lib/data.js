@@ -22,17 +22,17 @@ export function getAllIds(){
   const jsonObj = JSON.parse(jsonStringData);
 
   //use .map() to create a new array from json that uses the id's of each object fromt he json file
-  return jsonObj.map(item =>{
+  const returnData = jsonObj.map(item =>{
       return {
         //next.js wants to see it set up liek this using params
-        params: {
+        params : {
           //will go and ONLY take the id from the item json file
           id: item.id.toString()
         }
       }
     });
-  //  console.log(returnedData);
-  //return returnedData;
+  console.log(returnData);
+  return returnData;
 };
 
 //create a function to get the list of ids sorted by the names alphabetically
@@ -87,6 +87,8 @@ export async function getData(idRequested){
   } else{
       objReturned = {};
     }
+  console.log("\nreturning getData()")
+  console.log(objReturned);
   
   return objReturned; //this will be sent back to [id].js
 }
