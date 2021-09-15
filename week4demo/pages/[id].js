@@ -38,16 +38,16 @@ export async function getStaticPaths(){
 //react component with the data acquired
 export default function Entry({ itemData }){
   return(
-  <article class="card col-6">
-    <div class="card-body">
-      <h5 class="card-title">
+  <article className="card col-6">
+    <div className="card-body">
+      <h5 className="card-title">
         <a href="https://finalfantasy.fandom.com/wiki/Ryne">{itemData.character}</a>
       </h5>
-      <h6 class="card-subtitled mb-2 text-text-muted">
+      <h6 className="card-subtitled mb-2 text-text-muted">
         <a href="https://en.wikipedia.org/wiki/Final_Fantasy_XIV:_Shadowbringers">{itemData.game}</a>
       </h6>
-      <p class="card-text">{itemData.year}</p>
-      <p class="card-text">{itemData.genre}</p>
+      <p className="card-text">{itemData.year}</p>
+      <p className="card-text">{itemData.genre}</p>
     </div>
   </article>
   );
