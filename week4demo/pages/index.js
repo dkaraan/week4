@@ -21,7 +21,7 @@ export default function Home({allData}) {
     <div className="list-group mx-3">
       {allData.map(({id, character}) =>(
         <Link href={`/${id}`}>
-          <a key={character} className='list-group-item'>{character}</a>
+          <a key={id} className='list-group-item'>{character}</a>
         </Link>
       ))}
     </div>
