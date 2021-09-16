@@ -1,5 +1,5 @@
 import Head from 'next/head';
-//import Layout from '../components/layout';
+import Layout from '../components/layout';
 
 
 //import getAllIds function
@@ -38,6 +38,7 @@ export async function getStaticPaths(){
 //react component with the data acquired
 export default function Entry({ itemData }){
   return(
+    <Layout>
   <article className="card col-6">
     <div className="card-body">
       <h5 className="card-title">
@@ -50,5 +51,6 @@ export default function Entry({ itemData }){
       <p className="card-text">{itemData.genre}</p>
     </div>
   </article>
+  </Layout>
   );
 }
