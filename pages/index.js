@@ -6,7 +6,7 @@ import { getSortedList } from '../lib/data';
 export async function getStaticProps( {params} ){
 
   //asynchronus to execute when receiving param from the getAllIds()
-  const allData = getSortedList();
+  const allData = await getSortedList(); //changed to asyn function so using await
   return {
     props: {
       allData
